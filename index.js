@@ -9,7 +9,7 @@ Http.createServer(() => console.log("keep-alive signal received")).listen(
 );
 
 function keepAlive() {
-  Axios.get(process.env.KEEP_ALIVE_URL);
+  Axios.get(process.env.KEEP_ALIVE_URL).catch(() => null);
 }
 
 const URL_QUERY = "https://alcat.pu.edu.tw/choice/q_person.html";
