@@ -1,7 +1,16 @@
+import Http from "http";
 import Axios from "axios";
 import DotENV from "dotenv";
 
 DotENV.config();
+
+Http.createServer(() => console.log("keep-alive signal received")).listen(
+  process.env.PORT || 80
+);
+
+function keepAlive() {
+  Axios.get(process.env.KEEP_ALIVE_URL);
+}
 
 const URL_QUERY = "https://alcat.pu.edu.tw/choice/q_person.html";
 const URL_NOTIFICATION = process.env.URL_NOTIFICATION;
@@ -35,6 +44,7 @@ let lastAmounts = {};
         `timeout for ${pending} ms`,
         `(${pending / 1000} s, ${pending / 1000 / 60} mins)`
       );
+      keepAlive();
       return fetch(pending);
     });
   }, timeout);
