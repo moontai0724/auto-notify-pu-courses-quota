@@ -4,6 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "type": "module",
+  "scripts": {
+    "start": "node ."
+  },
   "dependencies": {
     "@types/axios": "^0.14.0",
     "axios": "^0.21.4",
