@@ -27,8 +27,7 @@ let lastAmounts = {};
       console.log(course);
 
       if (lastAmount !== course.remains) {
-        sendNotification(course.id, course.name, course.remains).then(
-          console.log,
+        sendNotification(course.id, course.name, course.remains).catch(
           console.error
         );
         console.log(
