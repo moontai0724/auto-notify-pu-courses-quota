@@ -4,9 +4,11 @@ import DotENV from "dotenv";
 
 DotENV.config();
 
-Http.createServer(() => console.log("keep-alive signal received")).listen(
-  process.env.PORT || 80
-);
+Http.createServer((request, response) => {
+  console.log("keep-alive signal received");
+  response.writeHead(200);
+  response.end();
+}).listen(process.env.PORT || 80);
 
 function keepAlive() {
   Axios.get(process.env.KEEP_ALIVE_URL).catch(() => null);
