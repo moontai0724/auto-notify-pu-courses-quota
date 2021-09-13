@@ -15,7 +15,7 @@ let lastAmounts = {};
     QUERY_COURSES.forEach(async (courseId) => {
       const course = await getCourseInformation(courseId);
       const lastAmount = lastAmounts[courseId] ?? 0;
-      console.log(course, lastAmounts);
+      console.log(course);
 
       if (lastAmount !== course.remains) {
         sendNotification(course.id, course.name, course.remains).then(
@@ -31,6 +31,10 @@ let lastAmounts = {};
       const pending =
         QUERY_INTERVAL_MIN +
         Math.random() * (QUERY_INTERVAL_MAX - QUERY_INTERVAL_MIN);
+      console.log(
+        `timeout for ${pending} ms`,
+        `(${pending / 1000} s, ${pending / 1000 / 60} mins)`
+      );
       return fetch(pending);
     });
   }, timeout);
