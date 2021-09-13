@@ -36,17 +36,17 @@ let lastAmounts = {};
         );
         lastAmounts[courseId] = course.remains;
       }
-
-      const pending =
-        QUERY_INTERVAL_MIN +
-        Math.random() * (QUERY_INTERVAL_MAX - QUERY_INTERVAL_MIN);
-      console.log(
-        `timeout for ${pending} ms`,
-        `(${pending / 1000} s, ${pending / 1000 / 60} mins)`
-      );
-      keepAlive();
-      return fetch(pending);
     });
+
+    const pending =
+      QUERY_INTERVAL_MIN +
+      Math.random() * (QUERY_INTERVAL_MAX - QUERY_INTERVAL_MIN);
+    console.log(
+      `timeout for ${pending} ms`,
+      `(${pending / 1000} s, ${pending / 1000 / 60} mins)`
+    );
+    keepAlive();
+    return fetch(pending);
   }, timeout);
 })();
 
