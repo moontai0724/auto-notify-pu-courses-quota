@@ -17,8 +17,8 @@ function keepAlive() {
 const URL_QUERY = "https://alcat.pu.edu.tw/choice/q_person.html";
 const URL_NOTIFICATION = process.env.URL_NOTIFICATION;
 const QUERY_COURSES = process.env.CORSES.split(",");
-const QUERY_INTERVAL_MIN = 2 * 60 * 1000;
-const QUERY_INTERVAL_MAX = 10 * 60 * 1000;
+const QUERY_INTERVAL_MIN = 1 * 10 * 1000;
+const QUERY_INTERVAL_MAX = 1 * 30 * 1000;
 let lastAmounts = {};
 
 (function fetch(timeout) {
